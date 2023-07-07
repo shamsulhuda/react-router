@@ -1,16 +1,13 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "./App.css";
-import About from "./components/About/About";
-import Home from "./components/Home/Home";
-import PostDetails from "./components/PostDetails/PostDetails";
-import Posts from "./components/Posts/Posts";
-import Shop from "./components/Shop/Shop";
-import UserDetails from "./components/UserDetails/UserDetails";
-import Users from "./components/Users/Users";
-import Main from "./layout/Main";
-
-function App() {
-  const router = createBrowserRouter([
+import { createBrowserRouter } from "react-router-dom";
+import About from "../components/About/About";
+import Home from "../components/Home/Home";
+import PostDetails from "../components/PostDetails/PostDetails";
+import Posts from "../components/Posts/Posts";
+import Shop from "../components/Shop/Shop";
+import UserDetails from "../components/UserDetails/UserDetails";
+import Users from "../components/Users/Users";
+import Main from "../layout/Main";
+export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
@@ -25,7 +22,7 @@ function App() {
         },
         {
           path: "/shop",
-          loader: async () => {
+          loader: async () =>{
             return fetch("https://dummyjson.com/products");
           },
           element: <Shop></Shop>,
@@ -66,11 +63,3 @@ function App() {
     },
     { path: "*", element: <div>This route not found</div> },
   ]);
-  return (
-    <div>
-      <RouterProvider router={router}></RouterProvider>
-    </div>
-  );
-}
-
-export default App;
